@@ -4,8 +4,9 @@ import './App.css';
 function App() {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // ← 新增 loading 狀態
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!question.trim()) {
@@ -13,8 +14,19 @@ function App() {
       return;
     }
 
-    // 模擬回覆
-    setAnswer(`你問的是：「${question}」，這是模擬回答喔！`);
+    setIsLoading(true);
+    setAnswer('');
+
+    try {
+      // 模擬等待 2 秒後取得回答
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      setAnswer(`你問的是：「${question}」，這是模擬回答喔！`);
+    } catch (error) {
+      setAnswer('發生錯誤，請稍後再試。');
+    }
+
+    setIsLoading(false);
   };
 
   return (
@@ -30,7 +42,7 @@ function App() {
         padding: 0,
         position: 'relative',
         overflow: 'hidden',
-        fontFamily: 'Noto Sans TC', 
+        fontFamily: 'Noto Sans TC',
       }}
     >
       <div
@@ -70,19 +82,20 @@ function App() {
           />
           <button
             type="submit"
+            disabled={isLoading}
             style={{
               width: '100%',
               padding: '12px',
               fontSize: '16px',
-              backgroundColor: '#007bff',
+              backgroundColor: isLoading ? '#999' : '#007bff',
               color: '#fff',
               border: 'none',
               borderRadius: '8px',
-              cursor: 'pointer',
+              cursor: isLoading ? 'not-allowed' : 'pointer',
               marginBottom: '20px',
             }}
           >
-            送出問題
+            {isLoading ? '正在回答中...' : '送出問題'}
           </button>
         </form>
         <div
@@ -96,7 +109,9 @@ function App() {
           }}
         >
           <strong>AI 回答：</strong>
-          <p style={{ marginTop: '8px' }}>{answer}</p>
+          <p style={{ marginTop: '8px' }}>
+            {isLoading ? '載入中，請稍後...' : answer}
+          </p>
         </div>
       </div>
     </div>
