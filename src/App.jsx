@@ -4,7 +4,8 @@ import './App.css';
 function App() {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // ← 新增 loading 狀態
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false); // ← 新增 error 狀態
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,15 +16,17 @@ function App() {
     }
 
     setIsLoading(true);
+    setError(false); // 送出前清除錯誤狀態
     setAnswer('');
 
     try {
-      // 模擬等待 2 秒後取得回答
+      // 模擬 API 請求（實際請改成 fetch 實際 API）
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       setAnswer(`你問的是：「${question}」，這是模擬回答喔！`);
-    } catch (error) {
-      setAnswer('發生錯誤，請稍後再試。');
+    } catch (err) {
+      console.error('發生錯誤：', err);
+      setError(true);
     }
 
     setIsLoading(false);
@@ -98,6 +101,7 @@ function App() {
             {isLoading ? '正在回答中...' : '送出問題'}
           </button>
         </form>
+
         <div
           style={{
             backgroundColor: '#fff',
@@ -110,7 +114,11 @@ function App() {
         >
           <strong>AI 回答：</strong>
           <p style={{ marginTop: '8px' }}>
-            {isLoading ? '載入中，請稍後...' : answer}
+            {isLoading
+              ? '載入中，請稍後...'
+              : error
+              ? <span style={{ color: 'red' }}>Oops! 發生錯誤，請稍後再試。</span>
+              : answer}
           </p>
         </div>
       </div>
