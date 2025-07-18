@@ -97,7 +97,7 @@ html, body, #root {
 /* === 手機版樣式 === */
 @media (max-width: 768px) {
   .app-container {
-    background-image: url('https://i.ibb.co/S7GRdZwX/1.png');
+    background-image: url('https://i.ibb.co/ch22rrkc/image.png');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
