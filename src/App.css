@@ -56,26 +56,33 @@ html, body, #root {
   .qa-card {
     top: 10%;
     left: 50%;
-    transform: translate(-50%, -0%);
-    padding: 1.5rem;
-    width: 90%;
+    transform: translate(-50%, 0%);
+    padding: 1rem;         /* 原本是 1.5rem，更緊湊 */
+    width: 85%;            /* 原本是 90%，略縮小整體寬度 */
   }
 
   .qa-card h1 {
-    font-size: 1.3rem;
+    font-size: 1rem;     /* 原本是 1.3rem，讓標題小一點 */
     text-align: center;
+    margin-bottom: 1rem;   /* 增加一點間距感 */
   }
 
   .qa-card textarea {
-    font-size: 1rem;
+    font-size: 0.9rem;     /* 比原本再小一點 */
+    height: 80px;          /* 稍微降低高度 */
+    padding: 10px;
+    margin-bottom: 12px;
   }
 
   .qa-card button {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding: 10px;
   }
 
   .answer-box {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding: 12px;
+    min-height: 60px;
   }
 }
 
