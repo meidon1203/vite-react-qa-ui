@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="qa-card">
-        <h1>我是臺灣吧創辦人蕭宇辰 問我點什麼吧！</h1>
+        <h1>我是臺灣吧創辦人<span className="nowrap">蕭宇辰</span> 問我點什麼吧！</h1>
         <form onSubmit={handleSubmit}>
           <textarea
             placeholder="請輸入你的問題..."
@@ -56,6 +56,15 @@ function App() {
           </p>
         </div>
       </div>
+
+      {/* 🔗 隱藏超連結按鈕 */}
+      <a
+        className="taiwanbar-link"
+        href="https://taiwanbar.cc"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="臺灣吧連結"
+      />
     </div>
   );
 }

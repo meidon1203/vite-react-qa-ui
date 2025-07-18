@@ -138,3 +138,14 @@ html, body, #root {
     min-height: 50px;
   }
 }
+/* === 隱藏連結：臺灣吧 LOGO 與標語區域 === */
+.taiwanbar-link {
+  position: absolute;
+  bottom: 2.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 40px;
+  z-index: 10;
+  background-color: transparent;
+}
