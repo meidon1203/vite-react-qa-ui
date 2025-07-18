@@ -141,11 +141,11 @@ html, body, #root {
 /* === 隱藏連結：臺灣吧 LOGO 與標語區域 === */
 .taiwanbar-link {
   position: absolute;
-  bottom: 4.5%;       /* 控制高度，4~6% 之間微調 */
+  bottom: 15.5%;  /* ↑ 往上拉這裡！可以微調為 14%～16% 之間 */
   left: 50%;
   transform: translateX(-50%);
-  width: 180px;        /* 按鈕寬度，可以視實際調整 */
-  height: 30px;        /* 按鈕高度 */
+  width: 180px;
+  height: 30px;
   z-index: 5;
-  opacity: 0;          /* 完全透明但可點擊 */
+  opacity: 0;
 }
