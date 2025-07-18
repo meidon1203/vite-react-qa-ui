@@ -1,4 +1,4 @@
-/* Reset */
+/* === Reset === */
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +12,9 @@ html, body, #root {
   overflow: hidden;
 }
 
-/* 🌐 桌機版背景 */
+/* === 共用樣式 === */
 .app-container {
-  background-image: url('https://i.ibb.co/wZtG65Wg/image.png');
+  background-image: url('https://i.ibb.co/wZtG65Wg/image.png'); /* 桌機背景 */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -24,7 +24,6 @@ html, body, #root {
   position: relative;
 }
 
-/* 🧊 問答框共用樣式 */
 .qa-card {
   background-color: #e0e0e0;
   padding: 2rem;
@@ -35,58 +34,6 @@ html, body, #root {
   position: absolute;
 }
 
-/* 📍 桌機版問答框位置（圖一：右上） */
-@media (min-width: 769px) {
-  .qa-card {
-    top: 42%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-/* 📱 手機版背景＋位置調整（圖二） */
-@media (max-width: 768px) {
-  .app-container {
-    background-image: url('https://i.ibb.co/ch22rrkc/image.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .qa-card {
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    padding: 1rem;         /* 原本是 1.5rem，更緊湊 */
-    width: 85%;            /* 原本是 90%，略縮小整體寬度 */
-  }
-
-  .qa-card h1 {
-    font-size: 1rem;     /* 原本是 1.3rem，讓標題小一點 */
-    text-align: center;
-    margin-bottom: 1rem;   /* 增加一點間距感 */
-  }
-
-  .qa-card textarea {
-    font-size: 0.9rem;     /* 比原本再小一點 */
-    height: 80px;          /* 稍微降低高度 */
-    padding: 10px;
-    margin-bottom: 12px;
-  }
-
-  .qa-card button {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
-
-  .answer-box {
-    font-size: 0.9rem;
-    padding: 12px;
-    min-height: 60px;
-  }
-}
-
-/* 文字與欄位共用樣式 */
 .qa-card h1 {
   font-size: 1.8rem;
   text-align: center;
@@ -131,4 +78,63 @@ html, body, #root {
   border-radius: 8px;
   min-height: 80px;
   font-size: 16px;
+}
+
+/* 不換行 class：用在 “蕭宇辰” */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* === 桌機定位 === */
+@media (min-width: 769px) {
+  .qa-card {
+    top: 42%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* === 手機版樣式 === */
+@media (max-width: 768px) {
+  .app-container {
+    background-image: url('https://i.ibb.co/ch22rrkc/image.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+
+  .qa-card {
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding: 0.6rem;
+    width: 80%;
+    border-radius: 14px;
+  }
+
+  .qa-card h1 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .qa-card textarea {
+    font-size: 0.9rem;
+    height: 70px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .qa-card button {
+    font-size: 0.9rem;
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+
+  .answer-box {
+    font-size: 0.9rem;
+    padding: 10px;
+    min-height: 50px;
+  }
 }
