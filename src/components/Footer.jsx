@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({ onClickPrivacy }) => {
   return (
     <footer
       style={{
@@ -16,10 +16,8 @@ const Footer = () => {
       <div style={{ fontSize: '14px', color: '#555' }}>
         © Taiwanbar Studio 臺灣各種吧股份有限公司
       </div>
-      <a
-        href="https://taiwanbar.cc/privacy-policy/"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={onClickPrivacy}
         style={{
           width: '150px',
           height: '60px',
@@ -32,13 +30,15 @@ const Footer = () => {
           color: '#333',
           fontWeight: '500',
           fontSize: '16px',
-          transition: 'background-color 0.2s ease'
+          transition: 'background-color 0.2s ease',
+          border: 'none',
+          cursor: 'pointer'
         }}
         onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#d5d5d5'}
         onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#e0e0e0'}
       >
         隱私權政策
-      </a>
+      </button>
     </footer>
   );
 };
