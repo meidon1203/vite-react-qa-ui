@@ -13,9 +13,12 @@ const Footer = ({ onClickPrivacy }) => {
         marginTop: '40px'
       }}
     >
-      <div style={{ fontSize: '14px', color: '#555' }}>
-        © Taiwanbar Studio 臺灣各種吧股份有限公司
-      </div>
+      <div style={{ fontSize: '14px', color: '#555', transform: 'translateX(-20px)' }}>
+  © Taiwanbar Studio
+  <br className="mobile-only-br" />
+  臺灣各種吧股份有限公司
+</div>
+
       <button
         onClick={onClickPrivacy}
         style={{
