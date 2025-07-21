@@ -13,7 +13,7 @@ const Footer = ({ onClickPrivacy }) => {
         marginTop: '40px'
       }}
     >
-      <div style={{ fontSize: '14px', color: '#555', transform: 'translateX(-20px)' }}>
+      <div style={{ fontSize: '14px', color: '#555', transform: 'translateX(-10px)' }}>
   © Taiwanbar Studio
   <br className="mobile-only-br" />
   臺灣各種吧股份有限公司
