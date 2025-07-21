@@ -132,32 +132,39 @@ footer {
 @media (max-width: 500px) {
   /* ===== App Layout ===== */
  .app-wrapper {
-  width: 100%;                  /* ✅ 給它寬度，不然裡面無法拉伸 */
-  display: flex;                /* ✅ 補上 display:flex 才能用 align-items */
+  width: 100%;
+  min-height: 100vh;             /* ✅ 讓它至少佔滿整個螢幕高度 */
+  display: flex;
+  flex-direction: column;        /* ✅ 垂直排列 header / main / footer */
+  background-color: #ffffff;     /* ✅ 保留你的背景 */
+  padding: 0;
+  box-sizing: border-box;
+}
+ .app-container {
+  flex: 1;                          /* ✅ 把 header & footer 撐開中間空間 */
+  padding: 24px 16px;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;    /* ✅ 你原本是寫 background-image，其實應該是 color！ */
-  padding: 0;
+  overflow-y: auto;                /* ✅ 超過畫面時中間區塊自己可以捲動 */
+  width: 100%;                     /* ✅ 確保撐滿橫向 */
   box-sizing: border-box;
 }
 
 
-  .app-container {
-    padding: 24px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   /* ===== 問答卡片區塊 ===== */
-  .qa-card {
-    position: static;
-    width: 227px;
-    padding: 16px;
-    background-color: #ffffff;
-    box-shadow: none;
-    border-radius: 12px;
-  }
+ .qa-card {
+  position: relative;               /* ✅ 不要用 static，也不要用 absolute */
+  width: 100%;                      /* ✅ 撐滿寬度 */
+  max-width: 500px;                 /* ✅ 最多不超過這個寬 */
+  padding: 16px;
+  background-color: #ffffff;
+  box-shadow: none;
+  border-radius: 12px;
+  margin-bottom: 24px;              /* ✅ 和 .answer-box 保持間距 */
+  box-sizing: border-box;
+}
+
 
   .qa-card h1 {
     font-size: 16px;
@@ -197,19 +204,18 @@ footer {
 
 .answer-box {
   width: 100%;
-  max-width: 500px;
+  max-width: 500px;               /* ✅ 跟 .qa-card 一致 */
   background-color: #d9d9d9;
   color: black;
   font-size: 14px;
   border-radius: 12px;
-  margin-top: 24px;
+  margin-bottom: 24px;            /* ✅ 留空間讓 footer 不緊貼 */
   padding: 16px 24px;
   text-align: center;
   box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  outline: 2px solid red; /* 幫你看清楚邊界 */
+  outline: none;                  /* ⛔ 可移除紅框：除非你還要 debug */
 }
+
 
 
   .answer-box .answer-title {
