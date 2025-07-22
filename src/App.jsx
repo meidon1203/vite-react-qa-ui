@@ -55,13 +55,7 @@ function App() {
 
         <AnswerBox isLoading={isLoading} error={error} answer={answer} />
 
-        <a
-          className="taiwanbar-link"
-          href="https://taiwanbar.cc"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="臺灣吧連結"
-        />
+       
       </main>
 
       <Footer onClickPrivacy={() => setShowPrivacyModal(true)} />

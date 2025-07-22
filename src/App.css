@@ -9,9 +9,9 @@ html, body, #root {
   height: 100%;
   width: 100%;
   font-family: 'Noto Sans TC', sans-serif;
-  background-color: transparent; /* 改透明，避免底部色塊 */
+  background-color: transparent;
   overflow-x: hidden;
-  overflow-y: auto; /* 允許垂直滾動 */
+  overflow-y: auto;
 }
 
 /* === 頁面最底層容器 === */
@@ -20,7 +20,6 @@ html, body, #root {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -91,21 +90,57 @@ html, body, #root {
   font-size: 16px;
 }
 
-/* 不換行 class：用在 “蕭宇辰” */
 .nowrap {
   white-space: nowrap;
 }
 
-/* === 桌機定位 === */
 @media (min-width: 769px) {
   .qa-card {
     top: 42%;
     left: 80%;
     transform: translate(-50%, -50%);
   }
+
+  .main-header {
+    width: 100%;
+    height: 100px;
+    background-color: #E1E1E1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    box-sizing: border-box;
+  }
+
+  .header-left-button,
+  .header-right-button {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-center-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-center-logo img {
+    height: 100px;
+    max-height: 100%;
+  }
+
+  .header-left-button a,
+  .header-right-button button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    padding: 0 12px;
+  }
 }
 
-/* === 隱藏臺灣吧超連結按鈕 === */
 .taiwanbar-link {
   position: absolute;
   bottom: 13%;
@@ -117,7 +152,6 @@ html, body, #root {
   opacity: 0;
 }
 
-/* === Footer 樣式 === */
 footer {
   padding: 24px 40px;
   text-align: center;
@@ -125,53 +159,50 @@ footer {
   color: #555;
   min-height: 60px;
   border-top: 1px solid #ddd;
-  backdrop-filter: blur(2px); /* 可選 */
+  backdrop-filter: blur(2px);
 }
 
-/* === 📱 手機版樣式區塊 === */
 @media (max-width: 500px) {
-    html, body, #root {
+  html, body, #root {
     height: 100vh;
     margin: 0;
     padding: 0;
     overflow: hidden;
   }
-  /* ===== App Layout ===== */
- .app-wrapper {
-  height: 100vh;
-  width: 100%;
-  min-height: 100vh;             /* ✅ 讓它至少佔滿整個螢幕高度 */
-  display: flex;
-  flex-direction: column;        /* ✅ 垂直排列 header / main / footer */
-  background-color: #ffffff;     /* ✅ 保留你的背景 */
-  padding: 0;
-  box-sizing: border-box;
-}
- .app-container {
-  flex: 1;                          /* ✅ 把 header & footer 撐開中間空間 */
-  padding: 24px 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;                /* ✅ 超過畫面時中間區塊自己可以捲動 */
-  width: 100%;                     /* ✅ 確保撐滿橫向 */
-  box-sizing: border-box;
-}
 
+  .app-wrapper {
+    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-  /* ===== 問答卡片區塊 ===== */
- .qa-card {
-  position: relative;               /* ✅ 不要用 static，也不要用 absolute */
-  width: 100%;                      /* ✅ 撐滿寬度 */
-  max-width: 500px;                 /* ✅ 最多不超過這個寬 */
-  padding: 16px;
-  background-color: #ffffff;
-  box-shadow: none;
-  border-radius: 12px;
-  margin-bottom: 24px;              /* ✅ 和 .answer-box 保持間距 */
-  box-sizing: border-box;
-}
+  .app-container {
+    flex: 1;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
+  .qa-card {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    padding: 16px;
+    background-color: #ffffff;
+    box-shadow: none;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+  }
 
   .qa-card h1 {
     font-size: 16px;
@@ -209,21 +240,19 @@ footer {
     margin-top: 12px;
   }
 
-.answer-box {
-  width: 100%;
-  max-width: 500px;               /* ✅ 跟 .qa-card 一致 */
-  background-color: #d9d9d9;
-  color: black;
-  font-size: 14px;
-  border-radius: 12px;
-  margin-bottom: 24px;            /* ✅ 留空間讓 footer 不緊貼 */
-  padding: 16px 24px;
-  text-align: center;
-  box-sizing: border-box;
-  outline: none;                  /* ⛔ 可移除紅框：除非你還要 debug */
-}
-
-
+  .answer-box {
+    width: 100%;
+    max-width: 500px;
+    background-color: #d9d9d9;
+    color: black;
+    font-size: 14px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    padding: 16px 24px;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+  }
 
   .answer-box .answer-title {
     font-size: 10px;
@@ -231,7 +260,6 @@ footer {
     margin-bottom: 8px;
   }
 
-  /* ===== Footer & Logo Link ===== */
   .taiwanbar-link {
     bottom: 20px;
     width: 160px;
@@ -239,7 +267,7 @@ footer {
     opacity: 0;
   }
 
-   footer {
+  footer {
     flex-shrink: 0;
     height: auto;
     padding: 16px;
@@ -249,46 +277,30 @@ footer {
     border-top: 1px solid #ccc;
   }
 
-  /* ===== Header 區塊樣式（手機版） ===== */
   .main-header {
     padding: 0 !important;
-    height: 129px !important;
+    height: 100px !important;
     position: relative;
     background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* 上方 iOS 狀態列背景 */
   .ios-status {
-    position: absolute;
-    width: 393px;
-    height: 50px;
-    top: 0;
-    left: 0;
-    background: #620000;
+    display: none;
   }
 
-  /* 上方 iOS 狀態列文字 */
   .ios-notch-text {
-    position: absolute;
-    width: 184px;
-    height: 15px;
-    left: 105px;
-    top: 14px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 15px;
-    color: #FFFFFF;
+    display: none;
   }
 
-  /* 左按鈕 */
   .header-left-button {
     position: absolute;
-    width: 80px;
+    width: 100px;
     height: 50px;
-    top: 65px;
-    left: 25px;
+    top: 25px;
+    left: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -296,13 +308,12 @@ footer {
     gap: 10px;
   }
 
-  /* 右按鈕 */
   .header-right-button {
     position: absolute;
-    width: 80px;
+    width: 100px;
     height: 50px;
-    top: 65px;
-    left: 291px;
+    top: 25px;
+    right: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -310,13 +321,13 @@ footer {
     gap: 10px;
   }
 
-  /* 中間 LOGO */
   .header-center-logo {
     position: absolute;
     width: 170px;
     height: 80px;
-    top: 49px;
-    left: 113px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -333,15 +344,13 @@ footer {
     display: none !important;
   }
 }
-/* 預設：電腦版不顯示換行 */
+
 .mobile-only-br {
   display: none;
 }
 
-/* 手機版：顯示換行 */
 @media (max-width: 500px) {
   .mobile-only-br {
     display: block;
   }
 }
-

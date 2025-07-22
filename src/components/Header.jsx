@@ -15,13 +15,15 @@ export default function Header({ onShowAbout, onShowXiao }) {
       }}
     >
       {/* 左邊 Logo */}
-      <a href="https://taiwanbar.cc" style={{ textDecoration: 'none' }}>
-        <img
-          src="/twblogo.png"
-          alt="Taiwan Bar Logo"
-          style={{ height: '100px', maxHeight: '100%' }}
-        />
-      </a>
+     <div className="header-logo">
+  <a href="https://taiwanbar.cc" style={{ textDecoration: 'none' }}>
+    <img
+      src="/twblogo.png"
+      alt="Taiwan Bar Logo"
+      style={{ height: '100px', maxHeight: '100%' }}
+    />
+  </a>
+</div>
 
       {/* 右邊按鈕區塊 */}
       <nav style={{ display: 'flex', gap: '24px' }}>
