@@ -30,13 +30,14 @@ export default function AnswerBox({ isLoading, error, answer }) {
           minHeight: '60px',
         }}
       >
-        {isLoading
-          ? '載入中，請稍後...'
-          : error
-          ? 'Oops! 發生錯誤，請稍後再試。'
-          : answer
-          ? answer
-          : ''}
+       {isLoading
+  ? '載入中，請稍後...'
+  : error
+  ? answer || 'Oops! 發生錯誤，請稍後再試。'
+  : answer
+  ? answer
+  : ''}
+
       </p>
     </section>
   );

@@ -28,6 +28,8 @@ function App() {
     setAnswer('');
 
     try {
+       console.log('送出的 payload:', JSON.stringify({ question }));
+
       const res = await fetch('https://ai-lao-tang-test.onrender.com/ask', {
         method: 'POST',
         headers: {
@@ -37,16 +39,17 @@ function App() {
       });
 
       if (!res.ok) {
+        const errorText = await res.text(); // 讀取錯誤訊息
         throw new Error(`HTTP error! status: ${res.status}`);
       }
 
-      const data = await res.json();
-      setAnswer(data.answer || '沒有從後端收到回答');
-    } catch (err) {
-      console.error('發生錯誤：', err);
-      setError(true);
-      setAnswer('伺服器錯誤，請稍後再試');
-    }
+        const data = await res.json();
+    setAnswer(data.answer || '後端沒有回傳 answer');
+  } catch (err) {
+    console.error('發生錯誤：', err.message);
+    setError(true);
+    setAnswer(`錯誤：${err.message}`); // 顯示在畫面上
+  }
 
     setIsLoading(false);
   };
