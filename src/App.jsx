@@ -28,9 +28,9 @@ function App() {
     setAnswer('');
 
     try {
-       console.log('送出的 payload:', JSON.stringify({ question }));
+      console.log('送出的 payload:', JSON.stringify({ question }));
 
-      const res = await fetch('https://ai-lao-tang-test.onrender.com/ask', {
+      const res = await fetch('https://my-fast-api-155896525530.asia-east1.run.app/ask', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,17 +39,22 @@ function App() {
       });
 
       if (!res.ok) {
-        const errorText = await res.text(); // 讀取錯誤訊息
         throw new Error(`HTTP error! status: ${res.status}`);
       }
 
-        const data = await res.json();
-    setAnswer(data.answer || '後端沒有回傳 answer');
-  } catch (err) {
-    console.error('發生錯誤：', err.message);
-    setError(true);
-    setAnswer(`錯誤：${err.message}`); // 顯示在畫面上
-  }
+      const data = await res.json();
+      
+      // 檢查 API 是否回傳錯誤
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setAnswer(data.answer || '後端沒有回傳 answer');
+    } catch (err) {
+      console.error('發生錯誤：', err.message);
+      setError(true);
+      setAnswer('發生錯誤，請稍後再試');
+    }
 
     setIsLoading(false);
   };
@@ -152,7 +157,7 @@ function App() {
               <li>有利於您的權益。</li>
               <li>本網站委託廠商協助蒐集、處理或利用您的個人資料時，將對委外廠商或個人善盡監督管理之責。</li>
             </ul>
-            <h3>六、Cookie 之使用</h3>
+            <h3>六、Cookie 之使用</h3>
             <p>為了提供您最佳的服務，本網站會在您的電腦中放置並取用我們的 Cookie，若您不願接受 Cookie 的寫入，您可在您使用的瀏覽器功能項中設定隱私權等級為高，即可拒絕 Cookie 的寫入，但可能會導致網站某些功能無法正常執行 。</p>
             <h3>七、隱私權保護政策之修正</h3>
             <p>本網站隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於網站上。</p>
