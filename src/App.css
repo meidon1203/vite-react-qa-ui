@@ -1,9 +1,8 @@
+/* === 背景圖變數：桌機預設 === */
+:root { --app-bg: url('/bgfcom.png'); }
+
 /* === Reset === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body, #root {
   height: 100%;
@@ -16,7 +15,8 @@ html, body, #root {
 
 /* === 頁面最底層容器 === */
 .app-wrapper {
-  background-image: url('/bgfcom.png');
+  /* 原本桌機背景交給最底部統一套用，避免打架 */
+  /* background-image: url('/bgfcom.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -75,10 +75,7 @@ html, body, #root {
   margin-bottom: 20px;
 }
 
-.qa-card button:disabled {
-  background-color: #999;
-  cursor: not-allowed;
-}
+.qa-card button:disabled { background-color: #999; cursor: not-allowed; }
 
 /* === 回答框樣式 === */
 .answer-box {
@@ -90,9 +87,7 @@ html, body, #root {
   font-size: 16px;
 }
 
-.nowrap {
-  white-space: nowrap;
-}
+.nowrap { white-space: nowrap; }
 
 @media (min-width: 769px) {
   .qa-card {
@@ -113,20 +108,11 @@ html, body, #root {
   }
 
   .header-left-button,
-  .header-right-button {
-    display: flex;
-    align-items: center;
-  }
+  .header-right-button { display: flex; align-items: center; }
 
-  .header-center-logo {
-    display: flex;
-    align-items: center;
-  }
+  .header-center-logo { display: flex; align-items: center; }
 
-  .header-center-logo img {
-    height: 100px;
-    max-height: 100%;
-  }
+  .header-center-logo img { height: 100px; max-height: 100%; }
 
   .header-left-button a,
   .header-right-button button {
@@ -162,12 +148,20 @@ footer {
   backdrop-filter: blur(2px);
 }
 
+/* === 手機版整合樣式 === */
 @media (max-width: 500px) {
+  /* 手機：把變數換成手機背景（加版本避免快取） */
+  :root { --app-bg: url('/cpvbgf.png?v=3'); }
+
   html, body, #root {
     height: 100vh;
     margin: 0;
     padding: 0;
     overflow: hidden;
+
+    /* 清掉上層可能殘留的任何背景，避免看到桌機圖 */
+    background: none !important;
+    background-image: none !important;
   }
 
   .app-wrapper {
@@ -176,7 +170,6 @@ footer {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
     padding: 0;
     box-sizing: border-box;
   }
@@ -225,10 +218,7 @@ footer {
     letter-spacing: 0.03em;
   }
 
-  .qa-card textarea::placeholder {
-    color: white;
-    text-align: center;
-  }
+  .qa-card textarea::placeholder { color: white; text-align: center; }
 
   .qa-card button {
     width: 114px;
@@ -254,18 +244,9 @@ footer {
     outline: none;
   }
 
-  .answer-box .answer-title {
-    font-size: 10px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
+  .answer-box .answer-title { font-size: 10px; font-weight: 700; margin-bottom: 8px; }
 
-  .taiwanbar-link {
-    bottom: 20px;
-    width: 160px;
-    height: 30px;
-    opacity: 0;
-  }
+  .taiwanbar-link { bottom: 20px; width: 160px; height: 30px; opacity: 0; }
 
   footer {
     flex-shrink: 0;
@@ -287,39 +268,22 @@ footer {
     justify-content: center;
   }
 
-  .ios-status {
-    display: none;
-  }
+  .ios-status, .ios-notch-text { display: none; }
 
-  .ios-notch-text {
-    display: none;
-  }
-
-  .header-left-button {
-    position: absolute;
-    width: 100px;
-    height: 50px;
-    top: 25px;
-    left: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
-  }
-
+  .header-left-button,
   .header-right-button {
     position: absolute;
     width: 100px;
     height: 50px;
     top: 25px;
-    right: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     gap: 10px;
   }
+  .header-left-button { left: 15px; }
+  .header-right-button { right: 15px; }
 
   .header-center-logo {
     position: absolute;
@@ -335,22 +299,16 @@ footer {
     padding: 10px;
     gap: 2px;
   }
+  .header-center-logo img { height: 70px; }
 
-  .header-center-logo img {
-    height: 70px;
-  }
+  .only-desktop { display: none !important; }
 
-  .only-desktop {
-    display: none !important;
-  }
+  .mobile-only-br { display: block; }
 }
 
-.mobile-only-br {
-  display: none;
-}
+.mobile-only-br { display: none; }
 
-@media (max-width: 500px) {
-  .mobile-only-br {
-    display: block;
-  }
+/* === 統一在最底部強制套用背景（避免任何覆蓋） === */
+html body #root .app-wrapper {
+  background: var(--app-bg) no-repeat center/cover !important;
 }
